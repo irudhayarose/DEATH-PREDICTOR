@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nutrition Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #dff6f0, #fefefe);
+    }
+
+    .heading {
+      color: #2c3e50;
+      font-size: 32px;
+      text-align: center;
+      margin-top: 30px;
+      font-weight: bold;
+    }
+
+    form {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      width: 420px;
+      margin: 25px auto;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+    form:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #34495e;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      transition: border 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    button {
+      background: #3498db;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 18px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+
+    .food-options {
+      max-height: 180px;
+      overflow-y: auto;
+      border: 1px solid #eee;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .food-category {
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: #2c3e50;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 3px;
+    }
+
+    .report, .result {
+      margin: 20px auto;
+      padding: 20px;
+      width: 500px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .images {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .coffin-container {
+      position: relative;
+      width: 200px;
+      height: 220px;
+    }
+    .coffin {
+      width: 100%;
+      height: 100%;
+    }
+    .person {
+      position: absolute;
+      left: -120px;
+      width: 90px;
+      opacity: 1;
+      top: 40px;
+      transition: all 3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 class="heading">Nutrition & Lifestyle Form</h2>
+  <form id="nutritionForm">
+    <label>Name: <input type="text" name="username" required></label>
+    <label>Photo: <input type="file" name="photo" accept="image/*"></label>
+    <label>Gender:
+      <select name="gender" required>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <label>Locality: <textarea name="locality" required rows="3" cols="30"></textarea></label>
+    <label>Age: <input type="number" name="age" min="1" required></label>
+    
+    <label>Favourite Food (select multiple):</label>
+    <div class="food-options">
+      <div class="food-category">Junk Food</div>
+      <label><input type="checkbox" name="food" value="Pizza" data-score="30">🍕 Pizza (30/100)</label>
+      <label><input type="checkbox" name="food" value="Burger" data-score="25">🍔 Burger (25/100)</label>
+      <label><input type="checkbox" name="food" value="Ice Cream" data-score="40">🍧 Ice Cream (40/100)</label>
+      <label><input type="checkbox" name="food" value="French Fries" data-score="20"> 🍟French Fries (20/100)</label>
+      
+      <div class="food-category">Healthy Food</div>
+      <label><input type="checkbox" name="food" value="Salad" data-score="90">🥗 Salad (90/100)</label>
+      <label><input type="checkbox" name="food" value="Fruits" data-score="85"> 🍉Fruits (85/100)</label>
+      <label><input type="checkbox" name="food" value="Oats" data-score="95"> 🥣Oats (95/100)</label>
+      <label><input type="checkbox" name="food" value="Grilled Chicken" data-score="80"> 🍗Grilled Chicken (80/100)</label>
+    </div>
+    <div class="food-category">Lifestyle & Health</div>
+    <label>Eating Habits:
+      <select name="eating_habits" required>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Average">Average</option>
+        <option value="Poor">Poor</option>
+      </select>
+    </label>
+    <label>Exercise Frequency:
+      <select name="exercise" required>
+        <option value="Daily">Daily</option>
+        <option value="3-5 times/week">3-5 times/week</option>
+        <option value="Occasionally">Occasionally</option>
+        <option value="Never">Never</option>
+      </select>
+    </label>
+    <label>Do you smoke?
+      <select name="smoking" required>
+        <option value="Never">Never</option>
+        <option value="Former smoker">Former smoker</option>
+        <option value="Occasionally">Occasionally</option>
+        <option value="Regularly">Regularly</option>
+      </select>
+    </label>
+    <label>Alcohol Consumption:
+      <select name="alcohol" required>
+        <option value="None">None</option>
+        <option value="Light (1-4 drinks/week)">Light (1-4 drinks/week)</option>
+        <option value="Moderate (5-10 drinks/week)">Moderate (5-10 drinks/week)</option>
+        <option value="Heavy (10+ drinks/week)">Heavy (10+ drinks/week)</option>
+      </select>
+    </label>
+    <label>Sleep Quality:
+      <select name="sleep" required>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Fair">Fair</option>
+        <option value="Poor">Poor</option>
+      </select>
+    </label>
+    
+    <div class="food-category">Mindset & Psychology</div>
+    <label>General Outlook on Life:
+      <select name="outlook" required>
+        <option value="Very optimistic">Very optimistic</option>
+        <option value="Somewhat optimistic">Somewhat optimistic</option>
+        <option value="Neutral">Neutral</option>
+        <option value="Pessimistic">Pessimistic</option>
+      </select>
+    </label>
+    <label>Stress Level:
+      <select name="stress" required>
+        <option value="Low">Low</option>
+        <option value="Moderate">Moderate</option>
+        <option value="High">High</option>
+        <option value="Very high">Very high</option>
+      </select>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="report" id="report" style="display:none;"></div>
+  <div class="result" id="result" style="display:none;">
+    <h3>Nutrition Visualization</h3>
+    <div class="images" id="visualization">
+      <div class="coffin-container">
+        <img src="./coffin.jpeg" alt="Coffin" class="coffin">
+        <img src="./girl.jpeg" alt="Person" class="person" id="personImg">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('nutritionForm');
+    const reportDiv = document.getElementById('report');
+    const resultDiv = document.getElementById('result');
+    const personImg = document.getElementById('personImg');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const data = new FormData(form);
+      const name = data.get('username');
+      const gender = data.get('gender');
+      const locality = data.get('locality');
+      const age = parseInt(data.get('age'));
+      const foods = data.getAll('food');
+
+      let total = 0;
+      let count = 0;
+      document.querySelectorAll('input[name="food"]:checked').forEach(f=>{
+        total += parseInt(f.getAttribute("data-score"));
+        count++;
+      });
+      let avgScore = count ? total / count : 0;
+
+      // Life expectancy logic (nutrition score influences)
+      let baseLife = 85; // average human lifespan
+      let expectancy = (avgScore / 100) * baseLife; 
+      let yearsLeft = Math.max(expectancy - age, 0);
+      let daysLeft = Math.floor(yearsLeft * 365);
+
+      // Report
+      let reportHTML = `<h3>Submitted Report</h3>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Gender:</b> ${gender}</p>
+        <p><b>Locality:</b> ${locality}</p>
+        <p><b>Age:</b> ${age}</p>
+        <p><b>Favourite Foods:</b> ${foods.join(", ")}</p>
+        <p><b>Nutrition Score:</b> ${avgScore.toFixed(1)}/100</p>
+        <p><b>Estimated Life Expectancy:</b> ${expectancy.toFixed(1)} years</p>
+        <p><b>Years Left:</b> ${yearsLeft.toFixed(1)} years (~${daysLeft} days)</p>`;
+      reportDiv.innerHTML = reportHTML;
+      reportDiv.style.display = "block";
+
+      resultDiv.style.display = "block";
+
+      // Movement logic - closer to coffin if fewer days left
+      let moveX;
+      if (daysLeft > 15000) {  // more than 40 years
+        moveX = -200; // far from coffin
+      } else if (daysLeft > 5000) { // 15–40 years
+        moveX = -100;
+      } else { // less than 15 years
+        personImg.style.position = "absolute";
+  personImg.style.top = "-50px";      // moves her above coffin
+  personImg.style.left = "50%";        // center horizontally
+  personImg.style.transform = "translateX(-50%)"; // perfect centering
+  personImg.style.width = "100px";  
+      }
+
+      personImg.style.transform = `translateX(${moveX}px)`;
+    });
+  </script>
+
+</body>
+</html>
